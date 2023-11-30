@@ -2,9 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <title>AnderTI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
      /*   @media screen and (max-width:800px){
             h3{
                 color:red;
@@ -18,52 +20,93 @@
         *{
             box-sizing: border-box;
         }
-
         body{
             margin: 0px;
             font-family: sans-serif;
-            background-color: whites;
+            background-color: white;
         }
-
-
         .pagina-inicio{
             display: flex;
             margin: 1%;
             border: 2px solid chartreuse;
-            background-color: rgb(236, 161, 161);
             color: white;
             max-width: 100%;
-            
         }
         .logo{
-            background-color: rgb(98, 0, 255);
-            height: 90px;
+          
             width: 15%;
             border-radius: 1%;
             text-align: center;
-            
         }
+        /*Estilizando a div da class slides*/
         .slides{
-            background-color: darkolivegreen;
+             border: 2px solid black;
             height: 400px;
             display: flex;
-            flex-direction: row;
-            align-items: center;
-             justify-content: flex-start;
             padding: 1%;
             margin: 1%;
+           justify-content: space-between;
         }
+        /*Estilizando a as divs filhos da div da class slides*/
         .slides div{
-            background-color: beige;
-            height: 30px;
+          /*  background-color: rgb(23, 197, 58);*/
+            height: 100%;
+            border: 1px solid rgb(119, 0, 255);
+            width: 100%;
+           padding: 1px;
+
         }
+        /*Estilizando a div da class descricao*/
+        .descricao{
+            margin-left: 1%;
+        }
+        /*Estilizando a div do rodapé*/
+        .rodap{
+            border: 1px solid black;
+            max-width: 98%;
+            margin-left: 1%;
+            height: 100px;
+        }
+         
+        h2{
+            margin-top: 10%;
+            font-family: 'Lobster', cursive;
+            color:white;
+            font-size: 200%;
+            background-color: blue;
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 50%;         
+        }
+        /*Daqui  para baixo está estilizando o carrossel do bootstrap*/
+        .carousel-inner{
+            height: 100%;
+            padding: 5%;
+            width: 100%;
+           }
+
+           .carousel{
+            width: 100%;
+            height: 100%;
+            
+           }
+           .carousel-item{
+            width: 100%;
+           }
+
+           img{
+            height: 100%;
+            width: 100%;
+            
+           }
+
     </style>
 </head>
 <body>
     <!-- Criando uma div para colocar  um logo e um menu-->
     <div class="pagina-inicio">
         <div class="logo">
-            <h2>Logo ati</h2>
+            <h2>AnderTI</h2>
         </div>
        <div>
         <p>Menu</p>
@@ -72,14 +115,43 @@
     </div>
     <div class="slides">
         
-        <div">
-            <p>Slides</p>
+     <!-- Colocando um carrossel do bootstrap, iniciando por aqui-->
+          
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="imagem/linda-imagem.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="imagem/iconeacai.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="imagem/iconeCombustivel.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+            <!--Terminando o carrossel por aqui-->
+        
+        <div class="descricao">
+            <p>Descrição</p>
+            <p>Anderson</p>
         </div>
-        <div>
-            <p>descrição</p>
-        </div>
+        
     </div>
-    <a href="https://www.globo.com/">link</a>
-    <script src="httpSs://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="rodap">
+             <p>Rodapé</p>
+    </div>
+   <a href="app.html">Página 2</a>
+   <!-- <a href="https://www.globo.com/">link</a> -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
