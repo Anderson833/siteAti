@@ -70,8 +70,10 @@
      background-color: white;
      width: 100%;
      height: 100%;
-     text-align: center;
-     font-size: 30px;
+     display: flex;
+     justify-content: center;
+    align-items: center;
+    font-size: 200%;
     }
     .dados{
         border: 2px solid red;
@@ -103,14 +105,60 @@
     background-color: blue;
     height: 20%;
     width: 50%;
+    border: none;
+    cursor: pointer;
    }
-  
+   .item{
+    border: 4px solid white;
+    height: 30%;
+    width: 90%;
+    margin: 4%;
+    display: flex;
+    flex-flow:row wrap ;
+    flex-wrap: nowrap;
+   
+   }
+   .valorDigitado{
+    border: 3px solid blue;
+    width: 30%;
+    text-align: center;
+    font-size: 200%;
+    padding-top: 2px;
+    background-color: white;
+   }
+   .descricaoDigitada{
+    border: 3px solid blue;
+    width: 1%;
+    flex-grow: 1;
+    padding-top: 2px;
+    font-size: 200%;
+    text-align: center;
+    background-color: white;
+   }
+   .bt{
+    background-color: red;
+    width:  13%;
+    border: 3px solid red;
+    margin: 1px;
+    text-align: center;
+    cursor: pointer;
+   }
+   #remuneracao {
+     width: 50%;
+     font-size:  2rem;
+   }
+
+   main{
+    border: 3px solid red;
+    width: 55%;
+    overflow:auto;
+   }
 </style>
-<body>
+<body onload="iniciaComFocus()">
     <div class="container">
 
     <div class="logo">
-  <h1>Orçamento das divídas</h1>
+  <h1>Calcular as divídas</h1>
     </div>
     <div class="informacoes">
      <div class="cards">
@@ -118,24 +166,24 @@
        <div class="item-infor">
   <p>  Valor Aplicado</p>
        </div>
-       <div class="item-total">
-        <p>resultado</p>
+       <div class="item-total"  id="salario">
+        <input type="text" onkeyup="verificaCampoValorAplicado()" id="remuneracao" placeholder="ex: 100" >
        </div>
      </div>
      <div class="cards">
         <div class="item-infor">
         <p>Total dos gastos</p>
         </div>
-        <div class="item-total">
-         <p>100</p>
+        <div class="item-total" id="gastos">
+         <p>0.00</p>
         </div>
       </div>
       <div class="cards">
         <div class="item-infor">
         <p>Total do saldo</p>
         </div>
-        <div class="item-total">
-         <p>100</p>
+        <div class="item-total" id="saldo">
+         <p>0.00</p>
         </div>
       </div>
     </div>
@@ -143,16 +191,23 @@
         <div class="dados">
                 <h3>Insirar as informações</h3>
              <label class="Lbl">Valor:</label>
-            <input type="text" id="valor" placeholder="informe o valor:">
+            <input type="text" id="valor"  onkeyup="verificaCampoDeValor()" placeholder="informe o valor:">
             <label>Descrição:</label>
             <input type="text" id="descricao" placeholder="informe uma descrição:" >
             <br><br>
-            <button id="botao" value="Add">Adicionar</button>
+            <button id="botao" onclick="pegaDados()" value="Add">Adicionar</button>
         </div>
-        <main class="lista">
-            <p>Lista dados</p>
+        <main class="lista" id="areaLista">
+            <!--<div class="item">
+            <div class="valorDigitado" id="valorGasto">
+            </div>  
+            <div class="descricaoDigitada" id="desc">
+            </div> 
+            <button class="bt">Excluir</button>
+          </div> -->
         </main>
     </div>
     </div>
+    <script src="Js/imc.js"></script>
 </body>
 </html>
