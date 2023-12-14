@@ -23,15 +23,16 @@ function aviso(){
 var soma=0; var valorSalario=0; var numx=""; var contador=0; var subtracao=0; 
 // variavel para fazer ação com a tecla ente
 var valorDivida=document.getElementById("valor");
+var valorDivida=document.getElementById("valor");
+var grana=document.getElementById("remuneracao").value;
 var btadd=document.getElementById("botao");
 
+
 valorDivida.addEventListener("keyup",function (event){
-   
   if(event.keyCode===13){
    event.preventDefault();
    btadd.click();
   }
-
 });
 
 function  verificaCampos(valor1,valor2){
@@ -57,7 +58,7 @@ function pegaDadosCalcularValores(){
 // Pegar os dados das informações como valor aplicado, gasto e saldo
   var gastos=document.getElementById("gastos");
   var saldos=document.getElementById("saldo");
-  var grana=document.getElementById("remuneracao").value;
+   grana=document.getElementById("remuneracao").value;
   var valor=document.getElementById("valor").value;
   var calcularVaolres=verificaCampos(grana,valor);
     if(calcularVaolres===true){
@@ -107,7 +108,11 @@ function pegaDadosCalcularValores(){
  }
 
 
-
+/**
+ * Método para deleta item com seu valor
+ * @param {*} id 
+ * @param {*} valor 
+ */
  function excluirDados(id,valor){
    let item =document.getElementById(id);
    var gastos=document.getElementById("gastos");
@@ -115,10 +120,8 @@ function pegaDadosCalcularValores(){
    /// valorSaldo=valorSaldo.parseFloat(valorSaldo)
     soma=soma-valor;
     subtracao=subtracao+valor;
-
    gastos.innerHTML=soma;
     saldos.innerHTML=subtracao;
-    console.log("valor do id "+contador)
    item.remove();
  }
 
@@ -241,6 +244,16 @@ function converterNaN(valor) {
     let salario=document.getElementById("remuneracao").value;
      let valorDigitado=colocarEmCasaDecimais(salario);
      document.getElementById("remuneracao").value=valorDigitado;
+
+     if(soma!==0 && subtracao!==0){
+        var valoresAlterados=salario-soma;
+        document.getElementById("saldo").innerHTML=valoresAlterados;
+     }
+
+     if(subtracao<0){
+      saldos.innerHTML=saldos.style.color='red';
+      saldos.innerHTML=subtracao;
+    }
      
   }
 
