@@ -151,7 +151,7 @@
    main{
     border: 3px solid red;
     width: 55%;
-    overflow:auto;
+    overflow: auto;
    }
 </style>
 <body onload="iniciaComFocus()">
@@ -167,7 +167,7 @@
   <p>  Valor Aplicado</p>
        </div>
        <div class="item-total"  id="salario">
-        <input type="text" onkeyup="verificaCampoValorAplicado()" id="remuneracao" placeholder="ex: 100" >
+        <input type="text" onkeyup="verificaCampoValorAplicado()" id="remuneracao" onchange="valoresEmDecimais()" placeholder="ex: 100" >
        </div>
      </div>
      <div class="cards">
@@ -195,7 +195,7 @@
             <label>Descrição:</label>
             <input type="text" id="descricao" placeholder="informe uma descrição:" >
             <br><br>
-            <button id="botao" onclick="pegaDados()" value="Add">Adicionar</button>
+            <button id="botao" onclick="pegaDadosCalcularValores()" value="Add">Adicionar</button>
         </div>
         <main class="lista" id="areaLista">
             <!--<div class="item">

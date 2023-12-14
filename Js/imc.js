@@ -17,8 +17,22 @@ function aviso(){
 
     var seta =document.getElementById("gastos");
     seta.innerHTML=preco.toFixed(2);
+
 }
-var soma=0; var valorSalario=0; var numx="";
+// Variaveis globais 
+var soma=0; var valorSalario=0; var numx=""; var contador=0; var subtracao=0; 
+// variavel para fazer ação com a tecla ente
+var valorDivida=document.getElementById("valor");
+var btadd=document.getElementById("botao");
+
+valorDivida.addEventListener("keyup",function (event){
+   
+  if(event.keyCode===13){
+   event.preventDefault();
+   btadd.click();
+  }
+
+});
 
 function  verificaCampos(valor1,valor2){
 var verificar=false;
@@ -35,35 +49,39 @@ var verificar=false;
   }
     return verificar;
 }
+
+
+
 // Método para executar os calculos
-function pegaDados(){
+function pegaDadosCalcularValores(){
 // Pegar os dados das informações como valor aplicado, gasto e saldo
-  var grana=document.getElementById("remuneracao").value;
   var gastos=document.getElementById("gastos");
   var saldos=document.getElementById("saldo");
+  var grana=document.getElementById("remuneracao").value;
   var valor=document.getElementById("valor").value;
   var calcularVaolres=verificaCampos(grana,valor);
-  var analisarCampoDescricao=verificaCampoDescricao();
-    if(calcularVaolres===true && analisarCampoDescricao===true){
+    if(calcularVaolres===true){
     }else{
         valor=parseFloat(valor);
         soma=parseFloat(soma);
         soma=soma+valor;
         gastos.innerHTML=soma;
-       
+      
         grana=parseFloat(grana);
         valorSalario=grana;
-        let subtracao=parseFloat(valorSalario-soma);
+         subtracao=parseFloat(valorSalario-soma);
         saldos.innerHTML=subtracao;
-     
+        
+
         if(subtracao<0){
           saldos.innerHTML=saldos.style.color='red';
           saldos.innerHTML=subtracao;
         }
-         
+        
         //meétodo para seta na lista
         setaOsDados(valor);
-       
+        //Método para limpar os campos de valor e descrição
+       limparCampos();
     }
 }
 
@@ -72,19 +90,49 @@ function pegaDados(){
   // Método para lista os dados
  function setaOsDados(valor){
     var descricao=document.getElementById("descricao").value;   
-    let printLista=`<div class="item">
+      contador++;
+
+    let printLista=`<div id="${contador}" class="item">
     <div class="valorDigitado">
     ${valor}
     </div>  
     <div class="descricaoDigitada">
     ${descricao}
     </div> 
-    <button class="bt">Excluir</button>
+    <button class="bt" id="deletar" onclick=excluirDados(${contador},${valor})>Excluir</button>
 </div>`;
      listagem.innerHTML += printLista;
+     console.log("Qtd "+contador);
+     ordenar(contador);
  }
 
 
+
+ function excluirDados(id,valor){
+   let item =document.getElementById(id);
+   var gastos=document.getElementById("gastos");
+   var saldos=document.getElementById("saldo");
+   /// valorSaldo=valorSaldo.parseFloat(valorSaldo)
+    soma=soma-valor;
+    subtracao=subtracao+valor;
+
+   gastos.innerHTML=soma;
+    saldos.innerHTML=subtracao;
+    console.log("valor do id "+contador)
+   item.remove();
+ }
+
+
+
+ function ordenar(id){
+  var item =document.getElementById(id);
+  var classe=item.getAttribute('class');
+  if(classe == "item"){
+    item.parentNode.appendChild(item);
+    console.log(classe)
+  }
+  
+}
 
  function setaSalario(){
     var valorAplicar=document.getElementById("salario");
@@ -119,18 +167,14 @@ function pegaDados(){
     var id="valor";
     apenasNumeros(id)
   }
-
-  function verificaCampoDescricao(){
-    let analisar=false;
-   let desc=document.getElementById('descricao').value;
-
-   if(desc==="" || desc===null){
-     alert("Preenchar o campo da descrição, caso contrário vai se nulo:")
-    analisar=true;
-   }else{
-      analisar=false;
-   }
-     return analisar;
+/**
+ *  Método para limpar os campos de valor e descição
+ */
+  function limparCampos(){
+    let desc=document.getElementById("descricao");
+    let valor=document.getElementById("valor");
+    desc.value="";
+    valor.value="";
   }
 
 function apenasNumeros(campo){
@@ -190,10 +234,21 @@ function converterNaN(valor) {
     return isNaN(valor) ? 0 : valor;
   }
 
+  /**
+   * Método para deixar o valor aplicado em casas decimais
+   */
+  function valoresEmDecimais(){
+    let salario=document.getElementById("remuneracao").value;
+     let valorDigitado=colocarEmCasaDecimais(salario);
+     document.getElementById("remuneracao").value=valorDigitado;
+     
+  }
+
 function colocarEmCasaDecimais(valor){
     valor =parseFloat(valor).toFixed(2);
     return valor;
   }
+
 function informaSalario(){
     var remuneracao=document.getElementById("salario");
    var x=parseFloat(prompt('Informe o salario:'));
@@ -204,4 +259,6 @@ function informaSalario(){
     remuneracao.innerHTML=x.toFixed(2);
     valorSalario=x;
    }
+
+
 }
